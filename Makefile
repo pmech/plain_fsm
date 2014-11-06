@@ -17,13 +17,16 @@
 
 all: compile
 
-compile:
+compile: deps
 	./rebar compile
+
+deps:
+	test -d deps || ./rebar get-deps
 
 clean:
 	./rebar clean
 
-test: 
+test:
 	./rebar eunit
 
 doc:
